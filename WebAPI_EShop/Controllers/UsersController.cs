@@ -80,30 +80,61 @@ namespace WebAPI_EShop.Controllers
         public async Task<ActionResult<User>> PostUser(UserCreateModel model)
         {
 
-            UserAddress userAddress = new UserAddress()
-            {
-                Address = new Address
-                {
-                    AddressLine = model.AddressLine,
-                    HouseNr = model.HouseNr,
-                    ZipCode = model.ZipCode,
-                    City = model.City
 
 
-                }
-
-            };
+         
             var user = new User()
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                Password = model.Password
+                Password = model.Password,
+                
+               /* UserAddress userAddress = new UserAddress()
+                {
+                    Address = new Address
+                    {
+                        AddressLine = model.AddressLine,
+                        HouseNr = model.HouseNr,
+                        ZipCode = model.ZipCode,
+                        City = model.City
 
-            };
+
+                    }
+
+                };*/
+
+        };
+
+            /* UserAddress userAddress = new UserAddress()
+             {
+                 Address = new Address
+                 {
+                     AddressLine = model.AddressLine,
+                     HouseNr = model.HouseNr,
+                     ZipCode = model.ZipCode,
+                     City = model.City
+
+
+                 }
+
+             };
+             var user = new User()
+             {
+                 FirstName = model.FirstName,
+                 LastName = model.LastName,
+                 Email = model.Email,
+                 Password = model.Password
+
+             };*/
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
+
+          /*  _context.UserAddresses.Add(userAddress);
+            await _context.SaveChangesAsync(); */
+
+           
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
