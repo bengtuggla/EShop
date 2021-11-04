@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI_EShop.Data;
 using WebAPI_EShop.Entities;
+using WebAPI_EShop.Models;
 
 namespace WebAPI_EShop.Controllers
 {
@@ -76,8 +77,18 @@ namespace WebAPI_EShop.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<ActionResult<Order>> PostOrder(OrderCreateModel model)
         {
+
+            var order = new Order
+            {
+
+                OurReference = model.OurReference,
+                Status = model.Status
+
+
+
+            };
             _context.Orders.Add(order);
             await _context.SaveChangesAsync();
 

@@ -14,7 +14,7 @@ namespace WebAPI_EShop.Entities
 
         public int Id { get; set; }
         public int UserId { get; set; }
-        public DateTimeOffset OrderDate { get; set; }
+        //public DateTimeOffset OrderDate { get; set; }
         public string OurReference { get; set; }
         public string Status { get; set; }
 

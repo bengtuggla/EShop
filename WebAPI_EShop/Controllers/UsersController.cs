@@ -48,11 +48,12 @@ namespace WebAPI_EShop.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
+          
             if (id != user.Id)
             {
                 return BadRequest();
             }
-
+         
             _context.Entry(user).State = EntityState.Modified;
 
             try
@@ -79,65 +80,23 @@ namespace WebAPI_EShop.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(UserCreateModel model)
         {
-
-
-
-         
             var user = new User()
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
-                Password = model.Password,
-                
-               /* UserAddress userAddress = new UserAddress()
-                {
-                    Address = new Address
-                    {
-                        AddressLine = model.AddressLine,
-                        HouseNr = model.HouseNr,
-                        ZipCode = model.ZipCode,
-                        City = model.City
-
-
-                    }
-
-                };*/
-
-        };
-
-            /* UserAddress userAddress = new UserAddress()
-             {
-                 Address = new Address
-                 {
-                     AddressLine = model.AddressLine,
-                     HouseNr = model.HouseNr,
-                     ZipCode = model.ZipCode,
-                     City = model.City
-
-
-                 }
-
-             };
-             var user = new User()
-             {
-                 FirstName = model.FirstName,
-                 LastName = model.LastName,
-                 Email = model.Email,
-                 Password = model.Password
-
-             };*/
-
-            _context.Users.Add(user);
+                Password = model.Password
+            };
+                       _context.Users.Add(user);
             await _context.SaveChangesAsync();
-
-          /*  _context.UserAddresses.Add(userAddress);
-            await _context.SaveChangesAsync(); */
-
-           
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
+
+       
+
+
+        
 
 
 

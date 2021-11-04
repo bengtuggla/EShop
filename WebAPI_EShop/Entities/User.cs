@@ -7,6 +7,8 @@ namespace WebAPI_EShop.Entities
 {
     public partial class User
     {
+        internal Address userAddress;
+
         public User()
         {
             Orders = new HashSet<Order>();

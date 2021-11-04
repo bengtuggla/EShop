@@ -1,5 +1,6 @@
-﻿SELECT * FROM Users
+﻿SELECT * FROM Products
 SELECT * FROM Addresses
+SELECT * FROM Users
 
 DELETE FROM Users WHERE Id=3;
 
