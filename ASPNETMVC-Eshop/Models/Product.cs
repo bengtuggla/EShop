@@ -13,7 +13,6 @@ namespace ASPNETMVC_Eshop.Models
         public decimal Price { get; set; }
         public string ImageUrl { get; set; }
         public int SubCategoryId { get; set; }
-
         public virtual SubCategory SubCategory { get; set; }
         public virtual ICollection<OrderLine> OrderLines { get; set; }
     }

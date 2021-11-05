@@ -26,7 +26,7 @@ namespace WebAPI_EShop.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.Include(x => x.SubCategory).ToListAsync();
+            return await _context.Products.Include(x => x.SubCategory).ThenInclude(x => x.Category).ToListAsync();
         }
 
         // GET: api/Products/5

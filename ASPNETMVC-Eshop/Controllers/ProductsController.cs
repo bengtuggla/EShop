@@ -21,9 +21,12 @@ namespace ASPNETMVC_Eshop.Controllers
         }
 
         // GET: ProductsController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            
+            var http = new HttpClient();
+            var product = await http.GetFromJsonAsync<Product>($"https://localhost:44323/api/Products/{id}");
+            return View(product);
         }
 
         // GET: ProductsController/Create
@@ -35,10 +38,13 @@ namespace ASPNETMVC_Eshop.Controllers
         // POST: ProductsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Product product)
         {
             try
             {
+                var client = new HttpClient();
+                await client.PostAsJsonAsync("https://localhost:44323/api/Products", product);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -46,6 +52,7 @@ namespace ASPNETMVC_Eshop.Controllers
                 return View();
             }
         }
+
 
         // GET: ProductsController/Edit/5
         public ActionResult Edit(int id)

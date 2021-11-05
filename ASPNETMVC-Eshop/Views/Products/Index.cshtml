@@ -4,69 +4,42 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Index xx</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-  
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div class="row row-cols-1 row-cols-md-4 g-4">
+    @foreach (var item in Model)
+    {
 
-            // MY CODE HERE
-            <div class="row row-cols-1 row-cols-md-4 g-4">
+        // MY CODE HERE
 
-                <!-- Card start -->
-                <div class="col">
-                    <div class="card h-100">
-                        
-                        <div class="card-body">
-                            <p class="small ">@Html.DisplayFor(modelItem => item.SubCategory.Name)</p>
-                            <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="card-img-top" alt="...">
-                            <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                            <p class="card-text"> @Html.DisplayFor(modelItem => item.Description) </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <p class="text-danger price">@Html.DisplayFor(modelItem => item.Price) :-</p>
-                                <button class="btn btn-outline-primary"><i class="fas fa-shopping-cart me-2"></i>Köp</button>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <small class="text-muted"><i class="fas fa-box-open me-3 text-success"></i>Finns i lager</small>
-                        </div>
-                    </div>
+
+        <!-- Card start -->
+    <div class="col">
+        <div class="card h-100">
+
+            <div class="card-body">
+                <p class="small "> @Html.DisplayFor(modelItem => item.SubCategory.Name)</p>
+                <img src="@Html.DisplayFor(modelItem => item.ImageUrl)" class="card-img-top" alt="...">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                <p class="card-text"> @Html.DisplayFor(modelItem => item.Description) </p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="text-danger price">@Html.DisplayFor(modelItem => item.Price) :-</p>
+                    <button class="btn btn-outline-primary"><i class="fas fa-shopping-cart me-2"></i>Köp</button>
                 </div>
-                <!-- Card end -->
-
-
-
             </div>
+            <div class="card-footer">
+                <small class="text-muted"><i class="fas fa-box-open me-3 text-success"></i>Finns i lager</small>
+            </div>
+        </div>
+        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ })
+        @Html.ActionLink("Details", "Details", new { id = item.Id });
+        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+    </div>
+        <!-- Card end -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //OLD CODE HERE
-            <tr>
-             
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    }
+</div>
+    
